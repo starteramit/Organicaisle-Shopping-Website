@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Organic aisle</title>
+    <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+</head>
+<body>
+{% block content %}
+
+
+	<div class="row" style="color: black;margin-top: -45px;">
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="my-list">
+			<img src="{% static 'images/fortune.png' %}" alt="Image" class="img-fluid"style="height: 235px;">
+    <h3>Fortune (1 Ltr)</h3>
+			<span>RS:140 INR</span>
+            <div class="offer"style="color: #0d95e8"><b>Extra 5% Off</b></div>
+			<div class="detail">
+
+			<img src="{% static 'images/fortune.png' %}" alt="Image" class="img-fluid"style="height: 235px;">
+			<a href="#" class="btn btn-info">Add To Cart</a>
+			<a href="#" class="btn btn-info">Buy Now</a>
+			<p>Glyphicons in Bootstrap : Bootstrap Includes over </p>
+			</div>
+		</div>
+		</div>
+
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="my-list">
+			<img src="{% static 'images/maggi.jpg' %}" alt="Image" class="img-fluid"style="height: 235px;">
+    <h3>Nestle Maggi</h3>
+			<span>RS:24 INR</span>
+            <div class="offer"style="color: #0d95e8"><b>Extra 2% Off</b></div>
+			<div class="detail">
+
+			<img src="{% static 'images/maggi.jpg' %}" alt="Image" class="img-fluid"style="height: 235px;">
+			<a href="#" class="btn btn-info">Add To Cart</a>
+                <a href="#" class="btn btn-info">Buy Now</a>
+			<p>Glyphicons in Bootstrap : Bootstrap Includes over </p>
+			</div>
+		</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="my-list">
+			<img src="{% static 'images/fortune_Atta.png' %}" alt="Image" class="img-fluid" style="height: 235px;">
+    <center><h3>Fortune Flour (1 KG)</h3></center>
+			<span>RS:50 INR</span>
+            <div class="offer"style="color: #0d95e8"><b>Extra 10% Off</b></div>
+			<div class="detail">
+
+			<img src="{% static 'images/fortune_Atta.png' %}" alt="Image" class="img-fluid"style="height: 235px;">
+			<a href="#" class="btn btn-info">Add To Cart</a>
+                <a href="#" class="btn btn-info">Buy Now</a>
+			<p>Glyphicons in Bootstrap : Bootstrap Includes over </p>
+			</div>
+		</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="my-list">
+			<img src="{% static 'images/Head&Shoulders.jpg' %}" alt="Image" class="img-fluid"style="height: 235px;">
+    <center><h3>Head & Shoulders Shampoo(400 ML)</h3></center>
+			<span>RS:140 INR</span>
+            <div class="offer"style="color: #0d95e8"><b></b></div>
+			<div class="detail">
+
+			<img src="{% static 'images/Head&Shoulders.jpg' %}" alt="Image" class="img-fluid"style="height: 235px;">
+			<a href="#" class="btn btn-info">Add To Cart</a>
+                <a href="#" class="btn btn-info">Buy Now</a>
+			<p>Glyphicons in Bootstrap : Bootstrap Includes over </p>
+			</div>
+		</div>
+		</div>
+
+		
+		</div>
+
+    
+{% endblock %}
+</body>
+</html>

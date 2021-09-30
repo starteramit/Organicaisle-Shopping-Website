@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Organic aisle</title>
+    <link rel="stylesheet" href="{% static 'css/special_product.css' %}">
+</head>
+<body>
+{% block content %}
+
+                       <div class="col-12 col-sm-6 col-md-4 image-grid-item">
+							<div style="background:url({% static "images/seasoning.jpg" %});" class="image-grid-cover">
+								 <form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="masala_spices">
+								<button type="submit" class="image-grid-clickbox"></button>
+                                <p class="cover-wrapper">Spices<br>There are many collection of Spices </p>
+                                     </form>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-md-4 image-grid-item">
+							<div style="background:url({% static "images/big_sale.jpg" %});" class="entry-cover image-grid-cover has-image">
+                                <form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="Dals_pulses">
+								<button type="submit" class="image-grid-clickbox"></button>
+                                <p class="cover-wrapper">Pulses<br>There are very Branded Pulses </p>
+                                </form>
+							</div>
+						</div>
+                            <div class="col-12 col-sm-6 col-md-4 image-grid-item">
+							<div style="background:url({% static "images/cooking Oil.jpg" %});" class="entry-cover image-grid-cover has-image">
+							<form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="ghee_oils">
+								<button type="submit" class="image-grid-clickbox"></button>
+                                <p class="cover-wrapper">Cooking Oil <br>There are very Branded cooking Oil </p>
+							</div>
+						</div>
+
+
+
+
+
+{% endblock %}
+</body>
+</html>

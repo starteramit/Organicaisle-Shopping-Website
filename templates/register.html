@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ORGANIC AISLE</title>
+     {% include 'cdnline.html' %}
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .login-container {
+  margin-top: 10%;
+  border: 1px solid #CCD1D1;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 50%;
+}
+
+.ads {
+  background-color:#e42a53;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #fff;
+  padding: 15px;
+    height:500px;
+  text-align: center;
+}
+
+.ads h1 {
+  margin-top: 20%;
+}
+
+#fl {
+  font-weight: 600;
+
+    font-size: 30px;
+    font-family: "Palatino Linotype";
+}
+
+#sl {
+  font-weight: 200;
+    font-family: "Palatino Linotype";
+    font-size: 25px;
+    color:lightgray;
+}
+
+.profile-img {
+  text-align: center;
+}
+
+.profile-img img {
+  border-radius: 50%;
+  /* animation: mymove 2s infinite; */
+}
+
+@keyframes mymove {
+  from {border: 1px solid #F2F3F4;}
+  to {border: 8px solid #F2F3F4;}
+}
+.login-form h3 {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.form-control {
+  font-size: 14px;
+}
+
+.forget-password a {
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 14px;
+}
+div.transbox {
+height:100px;
+  background-color:rgba(100, 100, 100, 0.7);
+
+}
+
+div.transbox a {
+    line-height: 92px;
+  font-weight: bold;
+  color: #000000;
+}
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+    {% include 'header.html' %}
+        <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+    {% include 'menu.html' %}
+            </div>
+        </div>
+        <div class="row"style="background:url({% static "images/gif2.jpg" %});">
+ <div class="transbox">
+   <center><a href="#"style="font-family: 'Palatino Linotype';font-size: 40px; color:white;text-decoration: none;">Sign Up</a>
+   </center>
+ </div>
+        </div>
+        <div class="container">
+        <div class="row" style="margin-top: 15px;">
+            <div class="col-sm-2"></div>
+     <div class="col-sm-8">
+         <div class="col-md-6 ads">
+             <center><img src="{% static 'images/logo.png' %}" alt="Image" class="img-fluid"></center>
+             <br/>
+             <span id="fl">Sign Up<br/></span>
+             <span id="sl">Get access to your Orders, Wishlist and Recommendations</span>
+             <img src="{% static 'images/login.jpg' %}" alt="Image" class="img-fluid" style="height:250px;width:100%;background-color: blue;">
+        </div>
+        <div class="col-md-6 login-form">
+          <h3>Sign Up</h3>
+
+          <form action="/register/" method="POST">
+              {% csrf_token %}
+            <div class="form-group">
+              <input type="text" class="form-control" name="first_name" placeholder="First Name"required>
+            </div>
+            <div class="form-group">
+             <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+            </div>
+              <div class="form-group">
+             <input type="text" class="form-control" name="username" placeholder="Username" required>
+            </div>
+              <div class="form-group">
+             <input type="email" class="form-control" name="email" placeholder="Email" required>
+            </div>
+              <div class="form-group">
+             <input type="password" class="form-control" name="password1" placeholder="Password" required >
+            </div>
+              <div class="form-group">
+             <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
+            </div>
+              <a href="/login/">Already User ?</a>
+
+          </form>
+
+            <div>
+                {% for message in messages %}
+                     <div class="alert alert-danger">
+                         ERROR -  {{ message }}
+                     </div>
+                {% endfor%}
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+
+    </div>
+    <div class="row" style="background-color: #353535;color:white;margin-top:15px;">
+    {% include 'footer.html' %}
+</div>
+    </div>
+
+</body>
+</html>

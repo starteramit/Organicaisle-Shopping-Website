@@ -1,0 +1,66 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <title>Organic aisle</title>
+    <link href="{% static 'css/footer.css' %}" rel="stylsheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .links{color:lightslategrey;}
+        h5{ font-size: 25px;}
+    </style>
+</head>
+<body>
+{% block content%}
+<section id="footer">
+		<div class="container" style="padding-top: 20px;">
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>About Us</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="" class="links">Contact Us</a></li>
+						<li><a href="" class="links">About Us</a></li>
+						<li><a href="" class="links">OrganicAisle Stories</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Help</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href=""class="links">Terms & Conditions</a></li>
+						<li><a href=""class="links">FAQ</a></li>
+					</ul>
+				</div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Connect Us</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="https://www.facebook.com/Organicaisle-106479271186030/" class="links">Facebook</a></li>
+						<li><a href="https://instagram.com/organicsaisle?igshid=43vifb32sovl" class="links">Instagram</a></li>
+						<li><a href="" class="links">Gmail</a></li>
+					</ul>
+				</div>
+			</div>
+            <center><img src="{% static 'images/logo.png' %}" alt="Image" class="img-fluid"></center>
+            <p style="text-align:center;"> A PERSON BUYING ORDINARY PRODUCT IN A SUPERMARKET IS IN TOUCH WITH HIS DEEPEST EMOTIONS...</p>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+					<ul class="list-unstyled list-inline social text-center" style="margin-top:5px;">
+						<li class="list-inline-item"><a href="https://www.facebook.com/Organicaisle-106479271186030/" class="links" style="font-size: 15px;">Visit Us : <i class="fab fa-facebook-square"></i></a></li>
+						<li class="list-inline-item"><a href="https://instagram.com/organicsaisle?igshid=43vifb32sovl/" class="links"  style="font-size: 15px;"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+				<hr>
+			</div>
+
+                <p class="h6 text-center">© 2020 OrganicAisle</p>
+				<hr>
+
+		</div>
+	</section>
+
+{% endblock %}
+</body>
+</html>

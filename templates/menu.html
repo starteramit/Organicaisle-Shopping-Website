@@ -1,0 +1,1428 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>Organic aisle</title>
+    {% include 'cdnline.html' %}
+    <script src="{% static 'js/menu.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<style>
+    .mega-dropdown-menu > li ul >form >li {
+        list-style-type: none;
+        padding: 0px;
+    }
+    .mega-dropdown-menu > li ul >li>form  > button:hover,
+    .col-xs-6 > button:hover,
+.mega-dropdown-menu > li ul > li > button:focus {
+        color: green;
+        font-size: 13px;
+        font-weight: bold;
+}
+  .mega-dropdown-menu .dropdown-header {
+  font-size: 15px;
+  font-weight: bold;
+}
+  .dropdown-menu > form > li{
+      text-align: center;
+  }
+    .dropdown-menu > form > li > button{
+        font-size: 14px;
+    }
+.dropdown-menu > form > li > button:hover{
+    font-size: 17px;
+    color: green;
+}
+</style>
+</head>
+<body>
+{% block content %}
+    <div class="container">
+  <nav class="navbar navbar-default" style="background-color: white;border: none;" >
+    <div class="navbar-header">
+    	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/" style="color: black;font-weight: bold;">HOME</a>
+	</div>
+
+	<div class="collapse navbar-collapse js-navbar-collapse ">
+		<ul class="nav navbar-nav">
+			<li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Staples<span class="caret"></span></a>
+				<ul class="dropdown-menu mega-dropdown-menu row" style="background-color: white;">
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Dals & pulses</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="Dals_pulses">
+
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="Toor">
+
+							<button  style="decoration: none;border: none;background-color: white;">Toor Dal</button>
+                            </form></li>
+
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="urad">
+
+							<button  style="decoration: none;border: none;background-color: white;">Urad Dal</button>
+                            </form></li>
+
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="moong">
+
+							<button  style="decoration: none;border: none;background-color: white;">Moong Dal</button>
+                            </form></li>
+
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="chana">
+
+							<button  style="decoration: none;border: none;background-color: white;">Chana Dal</button>
+                            </form></li>
+
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="other">
+
+							<button  style="decoration: none;border: none;background-color: white;">Other Pulses</button>
+                            </form></li>
+							<li class="divider"></li>
+
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Ghee & Oils</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="ghee_oils">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="sunflower">
+							<button  style="decoration: none;border: none;background-color: white;">Sunflower Oil</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="ricebran">
+							<button  style="decoration: none;border: none;background-color: white;">Rice Bran</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="groundnut">
+							<button  style="decoration: none;border: none;background-color: white;">Groundnut Oil</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="mustard">
+							<button  style="decoration: none;border: none;background-color: white;">Mustard Oil</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="otheroil">
+							<button  style="decoration: none;border: none;background-color: white;">Other Oil</button>
+                            </form></li>
+
+                            <li class="divider"></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="ghee">
+							<button  style="decoration: none;border: none;background-color: white;">Ghee</button>
+                            </form></li>
+							<li class="divider"></li>
+
+
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Atta & Flours</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="atta_flour">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="wheat">
+							<button  style="decoration: none;border: none;background-color: white;">Wheat Flour</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="rice">
+							<button  style="decoration: none;border: none;background-color: white;">Rice Flour</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="maida">
+							<button  style="decoration: none;border: none;background-color: white;">Maida</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="otherflour">
+							<button  style="decoration: none;border: none;background-color: white;">Other Flour</button>
+                            </form></li>
+                            <li class="divider"></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="grains">
+							<button  style="decoration: none;border: none;background-color: white;">Grains</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="suji">
+							<button  style="decoration: none;border: none;background-color: white;">Rava & Suji</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="besan">
+							<button  style="decoration: none;border: none;background-color: white;">Besan</button>
+                            </form></li>
+                            <li class="divider"></li>
+
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Masalas Spices<br> & Salt</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="masala_spices">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="whole">
+							<button  style="decoration: none;border: none;background-color: white;">Whole Spices</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="powder">
+							<button  style="decoration: none;border: none;background-color: white;">Powdered Spices</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="ready">
+							<button  style="decoration: none;border: none;background-color: white;">Ready Masala</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="cooking">
+							<button  style="decoration: none;border: none;background-color: white;">Cooking Pastes & Puries</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="herbs">
+							<button  style="decoration: none;border: none;background-color: white;">Herbs & Seasoning</button>
+                            </form></li>
+                            <li class="divider"></li>
+                             <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="salt">
+							<button  style="decoration: none;border: none;background-color: white;">Salt</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+
+                    <li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Rice Products<br> & Sugar</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="rice_sugar">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="masoori">
+							<button  style="decoration: none;border: none;background-color: white;">Sona Masoori Rice</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="otherrice">
+							<button  style="decoration: none;border: none;background-color: white;">Other Rice Variety</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="poha">
+							<button  style="decoration: none;border: none;background-color: white;">Poha</button>
+                            </form></li>
+							  <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="puffed">
+							<button  style="decoration: none;border: none;background-color: white;">Puffed Rice</button>
+                            </form></li>
+							 <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="basmati">
+							<button  style="decoration: none;border: none;background-color: white;">Basmati Rice</button>
+                            </form></li>
+                            <li class="divider"></li>
+                             <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="sugar">
+							<button  style="decoration: none;border: none;background-color: white;">Sugar</button>
+                            </form></li>
+                             <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="jaggery">
+							<button  style="decoration: none;border: none;background-color: white;">Jaggery</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+
+                    <li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Dry Fruit,Nuts<br> & Seeds</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="dryfruit_seed">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							 <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="cashew">
+							<button  style="decoration: none;border: none;background-color: white;">Cashew Nuts</button>
+                            </form></li>
+							 <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="almond">
+							<button  style="decoration: none;border: none;background-color: white;">Almonds</button>
+                            </form></li>
+							<li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="dates">
+							<button  style="decoration: none;border: none;background-color: white;">Dates & Raisins</button>
+                            </form></li>
+							 <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="dried">
+							<button  style="decoration: none;border: none;background-color: white;">Dried Fruits</button>
+                            </form></li>
+							 <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="edible">
+							<button  style="decoration: none;border: none;background-color: white;">Edible Seeds</button>
+                            </form></li>
+							<li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="staples_type" value="othernut">
+							<button  style="decoration: none;border: none;background-color: white;">Other Nuts</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+
+
+
+				</ul>
+			</li>
+        <!----------------------Second menu staRT------------>
+            <li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Snacks & Beverages<span class="caret"></span></a>
+				<ul class="dropdown-menu mega-dropdown-menu" style="background-color: white;">
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Biscuits</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="biscuits">
+						    <button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="cookies">
+							<button  style="decoration: none;border: none;background-color: white;">Cookies</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="cream">
+							<button  style="decoration: none;border: none;background-color: white;">Cream Biscuits</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="milk">
+							<button  style="decoration: none;border: none;background-color: white;">Milk & Glucose</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="salted">
+							<button  style="decoration: none;border: none;background-color: white;">Salted</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="cheeslets">
+							<button  style="decoration: none;border: none;background-color: white;">Cheeslets</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="wafers_rusk">
+							<button  style="decoration: none;border: none;background-color: white;">Wafers & Rusk</button>
+                            </form></li>
+							<li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Chips,Namkeen & Snacks</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="Chips_Namkeen_Snacks">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="namkeen">
+							<button  style="decoration: none;border: none;background-color: white;">Namkeen</button>
+                            </form></li>
+                           <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="chips">
+							<button  style="decoration: none;border: none;background-color: white;">Chips</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="popcorn">
+							<button  style="decoration: none;border: none;background-color: white;">Popcorn, Paped & Fryums</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="snacky_nuts">
+							<button  style="decoration: none;border: none;background-color: white;">Snacky Nuts</button>
+                            </form></li>
+							<li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Tea & Coffee</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="tea_coffee">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                             <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="tea">
+							<button  style="decoration: none;border: none;background-color: white;">Tea</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="tea_bags">
+							<button  style="decoration: none;border: none;background-color: white;">Tea Bags</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="green_tea">
+							<button  style="decoration: none;border: none;background-color: white;">Green Tea</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="ice_tea">
+							<button  style="decoration: none;border: none;background-color: white;">Ice Tea</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="roast_ground">
+							<button  style="decoration: none;border: none;background-color: white;">Roast & Ground</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="instant_coffee">
+							<button  style="decoration: none;border: none;background-color: white;">Instant Coffee</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Juices</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="juices">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="mixed_fruit_juices">
+							<button  style="decoration: none;border: none;background-color: white;">Mixed Fruit Juices</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="guava_juices">
+							<button  style="decoration: none;border: none;background-color: white;">Guava Juices</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="orange_juices">
+							<button  style="decoration: none;border: none;background-color: white;">Orange Juices</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="lychee_juices">
+							<button  style="decoration: none;border: none;background-color: white;">Lychee Juices</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="apple_juices">
+							<button  style="decoration: none;border: none;background-color: white;">Apple Juices</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="fruit_drink">
+							<button  style="decoration: none;border: none;background-color: white;">Fruit Drinks</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="other_juices">
+							<button  style="decoration: none;border: none;background-color: white;">Other Juices</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+
+                    <li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Soft & Health Drinks</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="health_drink">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="cold_drink">
+							<button  style="decoration: none;border: none;background-color: white;">Cold Drinks</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="energy_drinks">
+							<button  style="decoration: none;border: none;background-color: white;">Energy & Sports Drinks</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="non_alcoholic_drink">
+							<button  style="decoration: none;border: none;background-color: white;">Non Alcoholic Drinks</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="soda_tonic">
+							<button  style="decoration: none;border: none;background-color: white;">Soda & Tonic Water</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="snacks_type" value="health_drink">
+							<button  style="decoration: none;border: none;background-color: white;">Health Drink</button>
+                            </form></li>
+                            <li class="divider"></li>
+
+						</ul>
+					</li>
+
+
+				</ul>
+			</li>
+
+            <!----------------------------Third menu---------------------->
+              <li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Packaged Food<span class="caret"></span></a>
+				<ul class="dropdown-menu mega-dropdown-menu" style="background-color: white;">
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Breakfast Cereals</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="breakfast">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="flake">
+							<button  style="decoration: none;border: none;background-color: white;">Flakes</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="muesli">
+							<button  style="decoration: none;border: none;background-color: white;">Muesli</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="oat">
+							<button  style="decoration: none;border: none;background-color: white;">Oats</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="cereal">
+							<button  style="decoration: none;border: none;background-color: white;">Cereal Bars</button>
+                            </form></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Noodles & Pasta</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="noodles_pasta">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="noodle">
+							<button  style="decoration: none;border: none;background-color: white;">Noodles</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="pasta">
+							<button  style="decoration: none;border: none;background-color: white;">Pasta</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="vermicelli">
+							<button  style="decoration: none;border: none;background-color: white;">Vermicelli</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Ketchups & Spreads</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="ketchup_spread">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="ketchup">
+							<button  style="decoration: none;border: none;background-color: white;">Ketchups</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="dips">
+							<button  style="decoration: none;border: none;background-color: white;">Dips & Spreads</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="dressing">
+							<button  style="decoration: none;border: none;background-color: white;">Dressing Sauce</button>
+                            </form></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Chocolates & Sweets</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="choclate_sweet">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="chocolate">
+							<button  style="decoration: none;border: none;background-color: white;">Chocolates</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="sweet">
+							<button  style="decoration: none;border: none;background-color: white;">Sweets</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="candy">
+							<button  style="decoration: none;border: none;background-color: white;">Caandy & Gums</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="mouth">
+							<button  style="decoration: none;border: none;background-color: white;">Mouth Freshners</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="cake">
+							<button  style="decoration: none;border: none;background-color: white;">Cake</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Jams & Honey</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="jams_honey">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="jam">
+							<button  style="decoration: none;border: none;background-color: white;">Jams</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="honey">
+							<button  style="decoration: none;border: none;background-color: white;">Honey</button>
+                            </form></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Pickles & Chutney</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="pickle_chutney">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="pickle">
+							<button  style="decoration: none;border: none;background-color: white;">Pickles</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="chutney">
+							<button  style="decoration: none;border: none;background-color: white;">Chutney</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Ready To Cook</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="ready_cook">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="soup">
+							<button  style="decoration: none;border: none;background-color: white;">Soups</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="mixes">
+							<button  style="decoration: none;border: none;background-color: white;">Ready Mixes</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="meals">
+							<button  style="decoration: none;border: none;background-color: white;">Ready Meals</button>
+                            </form></li>
+							<li class="divider"></li>
+                            <li class="dropdown-header">Cooking Sauces & Vineger</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="cooking_sauce">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="cooking">
+							<button  style="decoration: none;border: none;background-color: white;">Cooking Sauce</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="packaged_type" value="vinegar">
+							<button  style="decoration: none;border: none;background-color: white;">Vinegar</button>
+                            </form></li>
+                            <li class="divider"></li>
+
+						</ul>
+					</li>
+				</ul>
+			</li>
+            <!----------------------------fourth menu---------------------->
+            <li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Personal & Baby Care<span class="caret"></span></a>
+				<ul class="dropdown-menu mega-dropdown-menu" style="background-color: white;">
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Soaps & Body Wash</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="soaps_body_wash">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="soaps">
+							<button  style="decoration: none;border: none;background-color: white;">Soaps</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="body_wash">
+							<button  style="decoration: none;border: none;background-color: white;">Body Wash</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="face_wash">
+							<button  style="decoration: none;border: none;background-color: white;">Face Wash</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="hand_wash">
+							<button  style="decoration: none;border: none;background-color: white;">Hand Wash</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="sanitizer">
+							<button  style="decoration: none;border: none;background-color: white;">Hand Sanitizer</button>
+                            </form></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Hair Care</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="hair_care">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="shampoo">
+							<button  style="decoration: none;border: none;background-color: white;">Shampoo</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="conditioner">
+							<button  style="decoration: none;border: none;background-color: white;">Conditioner</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="hair_oil">
+							<button  style="decoration: none;border: none;background-color: white;">Hair Oil</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="hair_color">
+							<button  style="decoration: none;border: none;background-color: white;">Hair Color</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="hair_serum">
+							<button  style="decoration: none;border: none;background-color: white;">Hair Serum</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="styling_products">
+							<button  style="decoration: none;border: none;background-color: white;">Styling Products</button>
+                            </form></li>
+                            <li class="divider"></li>
+
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Oral Care</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="oral_care">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="toothpaste">
+							<button  style="decoration: none;border: none;background-color: white;">Toothpaste</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="toothbrush">
+							<button  style="decoration: none;border: none;background-color: white;">Toothbrush</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="mouthwash">
+							<button  style="decoration: none;border: none;background-color: white;">Mouthwash</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="tougue_cleaners">
+							<button  style="decoration: none;border: none;background-color: white;">Tongue Cleaners</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="floss">
+							<button  style="decoration: none;border: none;background-color: white;">Floss</button>
+                            </form></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Deos,Perfumes & Talc</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="deos_perfumes">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="women_deo">
+							<button  style="decoration: none;border: none;background-color: white;">Women's Deo</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="men_deo">
+							<button  style="decoration: none;border: none;background-color: white;">Men's Deo</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="perfumes">
+							<button  style="decoration: none;border: none;background-color: white;">Perfumes</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="talc">
+							<button  style="decoration: none;border: none;background-color: white;">Talc</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Creams,Lotions<br> & Skin Care</li>
+						    <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="creams_lotions">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="creams">
+							<button  style="decoration: none;border: none;background-color: white;">Creams</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="body_lotion">
+							<button  style="decoration: none;border: none;background-color: white;">Body Lotion</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="hair_removal">
+							<button  style="decoration: none;border: none;background-color: white;">Hair Removal</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="sunscreen">
+							<button  style="decoration: none;border: none;background-color: white;">Sunscreen</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="lip_care">
+							<button  style="decoration: none;border: none;background-color: white;">Lip Care</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="toner">
+							<button  style="decoration: none;border: none;background-color: white;">Toner</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="body_oil">
+							<button  style="decoration: none;border: none;background-color: white;">Body Oil</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="facepacks_scrubs">
+							<button  style="decoration: none;border: none;background-color: white;">Face Packs & Scrubs</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="facial_tissues">
+							<button  style="decoration: none;border: none;background-color: white;">Facial Tissues</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Diapers & Wipes</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="diapers_wipes">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="diapers">
+							<button  style="decoration: none;border: none;background-color: white;">Diapers</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="wipes">
+							<button  style="decoration: none;border: none;background-color: white;">Wipes</button>
+                            </form></li>
+                            <li class="divider"></li>
+
+						</ul>
+					</li>
+					<li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Kajal & Makeup</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="kajal_makeup">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="kajal">
+							<button  style="decoration: none;border: none;background-color: white;">Kajal</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="lipsticks">
+							<button  style="decoration: none;border: none;background-color: white;">Lipsticks</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="makeup">
+							<button  style="decoration: none;border: none;background-color: white;">Makeup</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="nail_care">
+							<button  style="decoration: none;border: none;background-color: white;">Nail care</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Welleness & <br>Common Pharma</li>
+                           <li> <form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="welleness">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="sexual_welleness">
+							<button  style="decoration: none;border: none;background-color: white;">Sexual Welleness</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="cotton_bandages">
+							<button  style="decoration: none;border: none;background-color: white;">Cotton & Bandages</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="chwayanprash">
+							<button  style="decoration: none;border: none;background-color: white;">Chwayanprash</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="ointments">
+							<button  style="decoration: none;border: none;background-color: white;">Ointments</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="antiseptic">
+							<button  style="decoration: none;border: none;background-color: white;">Antiseptic</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="pain_relievers">
+							<button  style="decoration: none;border: none;background-color: white;">Pain Relievers</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="digestives">
+							<button  style="decoration: none;border: none;background-color: white;">Digestives</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+                    <li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Sanitary Needs</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="sanitary_needs">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="sanitary_pads">
+							<button  style="decoration: none;border: none;background-color: white;">Sanitary Pads</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="tampons">
+							<button  style="decoration: none;border: none;background-color: white;">Tampons</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="initimate">
+							<button  style="decoration: none;border: none;background-color: white;">Initimate Care</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Shaving Needs</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="shaving">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="blades_razors">
+							<button  style="decoration: none;border: none;background-color: white;">Blades & Razors</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="creams_foam">
+							<button  style="decoration: none;border: none;background-color: white;">Creams & Foam</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="after_shave">
+							<button  style="decoration: none;border: none;background-color: white;">After Shave</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="shaving_brush">
+							<button  style="decoration: none;border: none;background-color: white;">Shaving Brush</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+
+
+                     <li class="col-sm-2 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Baby Bath <br>& Skin Care</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_bath_skin">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_soaps">
+							<button  style="decoration: none;border: none;background-color: white;">Baby Soaps</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_shampoo">
+							<button  style="decoration: none;border: none;background-color: white;">Baby Shampoo</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_oil">
+							<button  style="decoration: none;border: none;background-color: white;">Baby Oil</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_cream">
+							<button  style="decoration: none;border: none;background-color: white;">Baby Cream</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_powder">
+							<button  style="decoration: none;border: none;background-color: white;">Baby Powder</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Baby Foods</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_food">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="baby_cereal">
+							<button  style="decoration: none;border: none;background-color: white;">Baby Cereal</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="care_type" value="infant_formula">
+							<button  style="decoration: none;border: none;background-color: white;">Infant Formula</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+            <!----------------------------fifth menu---------------------->
+            <li class="dropdown mega-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Household Care<span class="caret"></span></a>
+				<ul class="dropdown-menu mega-dropdown-menu"style="background-color: white;">
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Detergents & Utensil Cleaners</li>
+							 <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="detergents_cleaners">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="detergents">
+							<button  style="decoration: none;border: none;background-color: white;">Detergents</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="fabric_care">
+							<button  style="decoration: none;border: none;background-color: white;">Fabric Care</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="washing_bars">
+							<button  style="decoration: none;border: none;background-color: white;">Washing Bars</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="dishwashe_liquid">
+							<button  style="decoration: none;border: none;background-color: white;">Dishwashe Liquid</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="dishwash_bars">
+							<button  style="decoration: none;border: none;background-color: white;">Dishwash Bars</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="scrub_pads">
+							<button  style="decoration: none;border: none;background-color: white;">Scrub Pads</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Shoe Care</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="shoe_care">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="shoe_polish">
+							<li><button  style="decoration: none;border: none;background-color: white;">Shoe Polish & Shiners</button></li>
+                            </form>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Floor & Other Cleaners</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="floor_cleaners">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="toilet_cleaners">
+							<button  style="decoration: none;border: none;background-color: white;">Toilet Cleaners</button>
+                            </form></li>
+                           <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="floor_cleaners">
+							<button  style="decoration: none;border: none;background-color: white;">Floor Cleaners</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="kitchen_cleaner">
+							<button  style="decoration: none;border: none;background-color: white;">Kitchen Cleaners</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="drain_cleaner">
+							<button  style="decoration: none;border: none;background-color: white;">Drain Cleaners</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="cleaning_essentials">
+							<button  style="decoration: none;border: none;background-color: white;">Cleaning Essentials</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="glass_cleaners">
+							<button  style="decoration: none;border: none;background-color: white;">Glass Cleaners</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Pet Food</li>
+                           <li> <form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="pet_food">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="dog_food">
+							<button  style="decoration: none;border: none;background-color: white;">Dog Food</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="cat_food">
+							<button  style="decoration: none;border: none;background-color: white;">Cat Food</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6">
+						<ul>
+							<li class="dropdown-header">Repellants & Freshners</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="repellants">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="mosquito">
+							<button  style="decoration: none;border: none;background-color: white;">Mosquito Repellents</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="air">
+							<button  style="decoration: none;border: none;background-color: white;">Air Freshners</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="insectisides">
+							<button  style="decoration: none;border: none;background-color: white;">Insectisides</button>
+                            </form></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Pooja Needs</li>
+                           <li> <form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="pooja">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="agarbatti">
+							<button  style="decoration: none;border: none;background-color: white;">Agarbatti & Dhoop</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="haven">
+							<button  style="decoration: none;border: none;background-color: white;">Haven Items</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="cotton">
+							<button  style="decoration: none;border: none;background-color: white;">Cotton Batti</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="daily_pooja">
+						    <button  style="decoration: none;border: none;background-color: white;">Daily Pooja</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+					<li class="col-sm-3 col-xs-6" >
+						<ul>
+							<li class="dropdown-header">Paper & Disposables</li>
+                            <li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="paper_disposable">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="aluminium_foils">
+							<button  style="decoration: none;border: none;background-color: white;">Aluminium Foils</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="paper_napkins">
+							<button  style="decoration: none;border: none;background-color: white;">Paper Napkins</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="disposable_plates">
+							<button  style="decoration: none;border: none;background-color: white;">Disposable Plates & Utensils</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="kitchen_roll">
+							<button  style="decoration: none;border: none;background-color: white;">Kitchen Roll</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="toilet_paper">
+							<button  style="decoration: none;border: none;background-color: white;">Toilet Paper</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="household_type" value="garbage_bags">
+							<button  style="decoration: none;border: none;background-color: white;">Garbage Bags</button>
+                            </form></li>
+                            <li class="divider"></li>
+						</ul>
+					</li>
+
+				</ul>
+			</li>
+            <!----------------------------six menu---------------------->
+
+            <li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dairy <span class="caret"></span></a>
+			  <ul class="dropdown-menu" role="menu">
+
+							<li class="dropdown-header" style="color: red;font-size: 18px;text-align: center;">Dairy</li>
+							<li><form action="/AllProduct/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="dairy">
+							<button  style="decoration: none;border: none;background-color: white;">All</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="milk">
+							<button  style="decoration: none;border: none;background-color: white;">Milk</button>
+                            </form></li>
+                           <li> <form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="cheese">
+							<button  style="decoration: none;border: none;background-color: white;">Cheese</button>
+                            </form></li>
+                            <li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="curd">
+							<button  style="decoration: none;border: none;background-color: white;">Curd & Yogurts</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="butter">
+							<button  style="decoration: none;border: none;background-color: white;">Butter & Spreads</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="soyamilk">
+							<button  style="decoration: none;border: none;background-color: white;">Soya Milk</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="buttermilk">
+							<button  style="decoration: none;border: none;background-color: white;">ButterMilk & Lassi</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="milkpowder">
+							<button  style="decoration: none;border: none;background-color: white;">Milk Powder</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="milkcream">
+							<button  style="decoration: none;border: none;background-color: white;">Milk Cream</button>
+                            </form></li>
+							<li><form action="/productlist/" method="POST">
+                                {% csrf_token %}
+                             <input type="hidden" name="dairy_type" value="paneer">
+							<button  style="decoration: none;border: none;background-color: white;">Paneer & Tofu</button>
+                            </form></li>
+              </ul>
+            </li>
+
+
+
+
+		</ul>
+	</div><!-- /.nav-collapse -->
+  </nav>
+</div>
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Organic aisle</title>
+  <!-- Latest compiled and minified CSS -->
+      {% include 'cdnline.html' %}
+      <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+<script>
+
+</script>
+
+  </head>
+<body>
+<div class="container-fluid">
+    <!-------------------------Header Start----------------------------->
+    {% include 'header.html' %}
+   <!-------------------------header End------------------------------>
+
+    <!-----------------------------MENU START---------------->
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+   {% include 'menu.html' %}
+        </div>
+        </div>
+
+
+{% if product_data %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12 col-xs-12 ">
+            <table class="table table-hover menu-tabu">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+						<th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Sub Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in product_data %}
+                    <tr>
+                        <td class="col-sm-4 col-md-4">
+
+                                <h4 class="media-heading"><a href="#">{{ data.product_name }}({{ data.product_weight }})</a></h4>
+
+                          </td>
+						<td class="col-sm-1 col-md-2"><input type="text" class="form-control" id="price" value="{{ data.product_price }}"disabled style="background: none;border: none;"></td>
+
+                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <input type="text" class="form-control" id="quan" name="quan" value="{{ data.product_quantity }}" style="background: none;border: none;"disabled>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><input type="text" class="form-control" name="total_price" id="total" value="{{ data.total_price }}" style="background: none;border: none;"disabled></td>
+                        <td class="col-sm-1 col-md-1">
+                        <form action="/remove/">
+                            {% csrf_token %}
+                            <input type="hidden" name="pro_remove" value="{{ data.id }}">
+                        <button type="submit" class="glyphicon glyphicon-remove"></button>
+                        </form></td>
+                    </tr>
+                {% endfor %}
+
+			   </tbody>
+            </table>
+			<hr class="my-hr">
+        </div>
+
+
+    </div>
+
+
+    <!----------------------------------------------shipping form Start----------------------------------------------------------------->
+    <div class="row">
+<div class="col-md-4 ">
+    <div class="clear"></div>
+  <div class="left-meni"><h5>Delivery Charges</h5></div><div class="right-meni"><h5>40</h5></div>
+  <div class="clear"></div>
+  <div class="left-meni"><h5>Total Payable Amount</h5></div><div class="right-meni"><h5>{{ total }}</h5></div>
+</div>
+
+    <div class="col-md-8">
+    <form action="/shipping_address/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="product_detail" value="{{ product_detail }}">
+        <input type="hidden" name="total_price" id="total_price" value="{{ total }}">
+        <input type="hidden" name="unique_id"  value="{{ unique_id }}">
+        <input type="hidden" name="product_details"  value="{{ product_details }}">
+        <input type="hidden" name="product_quantity"  value="{{ product_quantity }}">
+        <input type="hidden" name="sub_total_price"  value="{{ sub_total_price }}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Full Name</label>
+      <input type="fullname" class="form-control" id="fullname" name="full_name" placeholder="Full Name" required >
+    </div>
+   <div class="form-group col-md-6">
+      <label>Mobile</label>
+      <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Mobile" required>
+    </div>
+  </div>
+
+        <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Email</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+    </div>
+  </div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label>Full Address</label>
+    <input type="text" class="form-control" id="fulladdress" name="full_address" placeholder="1234 Main St" required>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputAddress2">Landmark</label>
+    <input type="text" class="form-control" id="landmark" name="landmark" placeholder="Apartment, studio, or floor" required>
+  </div>
+</div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+        <select class="form-control" name="city" id="inputCity" required>
+            <option selected>Ayodhya</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputZip">Pincode</label>
+{#      <input type="text" class="form-control" name="pincode" id="pincode" required>#}
+        <select class="form-control" name="pincode" id="pincode" required>
+            <option selected>224001</option>
+        </select>
+    </div>
+  </div>
+<div class="form-row">
+ <div class="form-group col-md-6">
+ <div class="form-check">
+  <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="Cash On Delivery" checked>
+  <label class="form-check-label text-success font-weight-bolder">
+   <h4> Cash On Delivery</h4>
+  </label>
+</div>
+</div>
+    <div class="form-group col-md-6">
+        <div class="form-check">
+           <input class="form-check-input" type="radio" name="payment" id="exampleRadios2" value="Online Payment" >
+            <label class="form-check-label text-success font-weight-bolder">
+            <h4> Online Payment</h4>
+          </label>
+        </div>
+     </div>
+</div>
+
+ <button type="submit" class="btn btn-success btn-lg btn-block">Proceed</button>
+</form>
+    </div>
+</div>
+
+    <!-----------------------------------------------shipping form End---------------------------------------------------------------->
+</div>
+{% else %}
+<center><img src="{% static 'images/product_not Found.png' %}" alt="Image" class="img-fluid" style="height: 200px;width: 300px;"></center>
+    <center><h2>Please Add Product To Cart</h2></center>
+    <br>
+{% endif %}
+     <!---------------------Footer Start--------------->
+<div class="container-fluid" style="background-color: #353535;color:white;">
+<div class="row">
+    {% include 'footer.html' %}
+</div>
+</div>
+    <!---------------------Footer  End--------------->
+
+</div>
+</body>
+</html>

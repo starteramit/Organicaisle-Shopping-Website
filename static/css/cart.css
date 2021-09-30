@@ -1,0 +1,74 @@
+.left-meni{
+ float:left;
+ width:65%;
+
+
+}
+.left-meni h5 {
+    font-weight: 500;
+   font-size: 17px;
+}
+.right-meni{
+ float:left;
+ width:35%;
+
+}
+.right-meni h5 {
+    font-weight: 500;
+   font-size: 16px;
+}
+.clear{
+clear:both;
+}
+.myborder-right {
+   border: 1px solid #ccc;
+    padding: 17px 11px;
+    min-height: 143px;
+    overflow: hidden;
+	margin: 10px 0px;
+	border-radius:4px;
+}
+.menu-tabu{
+margin: 20px 0px;
+}
+.menu-tabu thead {
+    background-color:#5cb85c;
+    color: #fff;
+
+}
+.my-hr{
+    height: -1px;
+    background-color: #00800052;
+    padding: 1px;
+}
+.btwa{
+margin-top:30px;
+}
+.rmovawa {
+    width: 60px;
+    height: 60px;
+
+    background-color:#666 ;
+    background-color: #827f7f;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+.payment-meth li{
+ list-style:none;
+ display: inline-block;
+ margin:10px 0px;
+}
+.payment-meth img{
+     display: inline-block;
+    height: 70px;
+    width:75px;
+    margin: 1px 16px;
+}
+@media only screen and (max-width: 600px) {
+.payment-meth img{
+  height: 50px;
+    width: 55px;
+    margin: 1px 5px;
+}
+}

@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Organic aisle</title>
+    {% include 'cdnline.html' %}
+
+<style>
+
+/* Product Heading Border   */
+    .svg-wrapper {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+	  margin: 0 auto;
+  width: 320px;
+}
+.shape {
+  stroke-dasharray: 140 540;
+  stroke-dashoffset: -474;
+  stroke-width: 8px;
+  fill: transparent;
+  stroke: #19f6e8;
+  border-bottom: 5px solid black;
+  transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+.text {
+  font-family: 'Roboto Condensed';
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 8px;
+  color: #fff;
+  top: -48px;
+  position: relative;
+}
+.svg-wrapper:hover .shape {
+  stroke-width: 2px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 760;
+}
+
+
+    div.transbox {
+height:100px;
+  background-color:rgba(100, 100, 100, 0.7);
+
+}
+
+div.transbox a {
+    line-height: 92px;
+  font-weight: bold;
+  color: #000000;
+}
+</style>
+</head>
+<body>
+
+  <div class="container-fluid">
+   <!-------------------------Header Start----------------------------->
+    {% include 'header.html' %}
+   <!-------------------------header End------------------------------>
+
+    <!-----------------------------MENU START---------------->
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+   {% include 'menu.html' %}
+        </div>
+        </div>
+
+
+
+     <div class="row"style="background:url({% static "images/gif2.jpg" %});">
+ <div class="transbox">
+   <center><a href="#"style="font-family: 'Palatino Linotype';font-size: 40px; color:white;text-decoration: none;">{{ product_type_name }}</a>
+   </center>
+ </div>
+        </div>
+
+      <!-------------------------Main product List Start------------------------------>
+       <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="container">
+                <div class="svg-wrapper" style="margin-top: 70px;color:black;">
+  <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+    <rect class="shape" height="60" width="320" />
+    <div class="text" style="color:black;font-size: 18px;background-color: lightgreen;text-align: center;">{{ heading }}</div>
+  </svg>
+</div>
+
+
+
+                <div class="row" style="color: black;margin-top: -45px;">
+                {% if single_pro_data %}
+
+                {% for data in single_pro_data %}
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="my-list">
+			<img src="{{ data.product_image.url }}" alt="Image" class="img-fluid"style="height: 235px;">
+ <form action="{% if user.is_authenticated %}/addtocart/{% else %}/loginPage/{% endif %}">
+    {% csrf_token %}
+    <h3>{{ data.product_name }}({{ data.product_quantity }})</h3>
+			<span style="font-size: 12px;color: gray;"><strike>RS:{{ data.product_actual_price }} INR</strike></span>&nbsp; <span>RS:{{ data.product_discount_price }} INR</span>
+            <div class="offer"style="color: #0d95e8"><b>{% if data.product_offer%}Special Offer{% endif %}</b></div>
+			<div class="detail">
+             <!--------------------------INPUT dATA-------------------------------------->
+                 <input type="hidden"  name="pro_name" value="{{ data.product_fullname }}">
+                <input type="hidden" name="buynow" value="True">
+                <input type="hidden"  name="pro_weight" value="{{ data.product_quantity }}">
+                <input type="hidden"  name="price" value="{{ data.product_discount_price }}">
+                <input type="hidden"  name="unique_id" value="{{ data.unique_id }}">
+             <!--------------------------INPUT dATA-------------------------------------->
+			<img src="{{ data.product_image.url }}" alt="Image" class="img-fluid"style="height: 235px;">
+                <p>{{ data.product_fullname }}</p>
+			Qty:<input type="number" name="pro_quantity" style="width: 45px;" min="1" max="20" value="" required>
+			<button type="submit" class="btn btn-info">Add to Cart</button>
+        	</div>
+        </form>
+		</div>
+		</div>
+                {% endfor %}
+
+                {% else %}
+                    <center><img src="{% static 'images/product_not Found.png' %}" alt="Image" class="img-fluid" style="height: 200px;width: 300px;"></center>
+                {% endif %}
+
+             </div>
+
+
+
+
+             </div>
+        </div>
+    </div>
+
+
+
+
+      <!-------------------------Main Products List End------------------------------>
+      <!-------------------------Recommended Products List Start------------------------------>
+  {% if pro_data %}
+         <div class="row mt-3">
+        <div class="col-sm-12">
+            <div class="container">
+                <div class="svg-wrapper" style="margin-top: 70px;color:black;">
+                   <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="shape" height="60" width="320" />
+                    <div class="text" style="color:black;font-size: 18px;background-color: lightgreen;text-align: center;">Other Products</div>
+                    </svg>
+            </div>
+
+
+
+      <div class="row" style="color: black;margin-top: -45px;">
+
+                {% for data in pro_data %}
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="my-list">
+			<img src="{{ data.product_image.url }}" alt="Image" class="img-fluid"style="height: 235px;">
+<form action="{% if user.is_authenticated %}/addtocart/{% else %}/loginPage/{% endif %}">
+    {% csrf_token %}
+    <h3>{{ data.product_name }}({{ data.product_quantity }})</h3>
+			<span style="font-size: 12px;color: gray;"><strike>RS:{{ data.product_actual_price }} INR</strike></span>&nbsp; <span>RS:{{ data.product_discount_price }} INR</span>
+            <div class="offer"style="color: #0d95e8"><b>{% if data.product_offer%}Special Offer{% endif %}</b></div>
+			<div class="detail">
+             <!--------------------------INPUT dATA-------------------------------------->
+                <input type="hidden"  name="pro_name" value="{{ data.product_fullname }}">
+                <input type="hidden" name="buynow" value="True">
+                <input type="hidden"  name="pro_weight" value="{{ data.product_quantity }}">
+                <input type="hidden"  name="price" value="{{ data.product_discount_price }}">
+                <input type="hidden"  name="unique_id" value="{{ data.unique_id }}">
+             <!--------------------------INPUT dATA-------------------------------------->
+			<img src="{{ data.product_image.url }}" alt="Image" class="img-fluid"style="height: 235px;">
+                <p>{{ data.product_fullname }}</p>
+			Qty:<input type="number" name="pro_quantity" style="width: 45px;" min="1" max="20" value="" required>
+			<button type="submit" class="btn btn-info">Add to Cart</button>
+        	</div>
+        </form>
+		</div>
+		</div>
+                {% endfor %}
+{#{% else %}#}
+{#<center><img src="{% static 'images/product_not Found.png' %}" alt="Image" class="img-fluid" style="height: 200px;width: 300px;"></center>#}
+
+             </div>
+
+
+
+
+             </div>
+        </div>
+    </div>
+  {% endif %}
+      <!-------------------------Recommended Products List End-------------------------------->
+
+     </div>
+
+
+<!---------------------Footer Start--------------->
+<div class="container-fluid" style="background-color: #353535;color:white;">
+<div class="row">
+    {% include 'footer.html' %}
+</div>
+</div>
+    <!---------------------Footer  End--------------->
+
+
+</body>
+</html>

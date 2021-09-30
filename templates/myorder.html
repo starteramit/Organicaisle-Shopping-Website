@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Organic aisle</title>
+{% include 'cdnline.html' %}
+<style>
+    .label{margin-left: 10px;font-size:15px;}
+    .col{padding: 5px;}
+    .heading:hover{font-size:20px;}
+    .txt{font-weight: bold;}
+    .svg-wrapper {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+	  margin: 0 auto;
+  width: 900px;
+}
+.shape {
+  stroke-dasharray: 140 540;
+  stroke-dashoffset: -474;
+  stroke-width: 8px;
+  fill: transparent;
+  stroke: #19f6e8;
+  border-bottom: 5px solid black;
+  transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+.text {
+  font-family: 'Roboto Condensed';
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 8px;
+  color: #fff;
+  top: -48px;
+  position: relative;
+}
+.svg-wrapper:hover .shape {
+  stroke-width: 2px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 900px;
+}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+   <!-------------------------Header Start----------------------------->
+    {% include 'header.html' %}
+   <!-------------------------header End------------------------------>
+
+    <!-----------------------------MENU START---------------->
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+   {% include 'menu.html' %}
+        </div>
+        </div>
+
+    <!-----------------------------MENU END---------------->
+
+ <div class="svg-wrapper" style="margin-top: 60px;color:black;">
+  <svg height="60" width="900px" xmlns="http://www.w3.org/2000/svg">
+    <rect class="shape" height="60" width="1000px" />
+    <div class="text" style="color:black;font-size: 18px;background-color: lightgreen;text-align: center;">My Order</div>
+  </svg>
+</div>
+{% if myorder_data_processing %}
+{% for data in myorder_data_processing %}
+
+<div class="container" style="border: 2px solid gray;border-radius: 1%;">
+
+<br>
+        <div class="well" style="border:1px solid;">
+
+<div class="row">
+    <div class="col-md-5 col" style="">
+      <strong class="prefix">Delivery Address</strong>
+
+    </div>
+    <div class="col-md-7 col" style=" ">
+        <span class="prefix txt">Order Id  : <span class="text-success txt">{{ data.order_id }}</span></span>
+
+    </div>
+
+        </div>
+            <div class="row">
+    <div class="col-md-5 col" style="">
+      <span class="prefix text-success txt">{{ data.full_name }}</span>
+    </div>
+    <div class="col-md-7 col" style=" ">
+        <span class="prefix txt">Order Date: <span class="text-success txt">{{ data.date_time }}</span></span>
+    </div>
+
+        </div>
+
+                  <div class="row">
+    <div class="col-md-5 col" style="">
+      <span class="prefix text-success txt">{{ data.full_address}} <br> {{ data.city }}  {{ data.pincode }} (Near {{ data.landmark }})</span>
+         </div>
+    <div class="col-md-7 col" style=" ">
+      <span class="prefix txt">Total Price({{ data.no_of_items }} Items):&nbsp;&nbsp; <span class="text-success txt"> <i class="fa fa-rupee-sign"></i> {{ data.total_price }}</span><br>
+          Payment Method : <span class="text-success txt">{{ data.payment_method }}</span>
+      </span>
+    </div>
+
+        </div>
+
+
+
+             <div class="row">
+    <div class="col-md-5 col" style="">
+      <span class="prefix txt">Phone No.:<span class="text-success txt">{{ data.mobile }}</span></span>
+    </div>
+    <div class="col-md-7 col" style=" ">
+      <span class="prefix txt ">Order Status  :<span class="text-success txt"style="font-weight: bold;"> {{ data.order_status }}</span></span>
+       </div>
+
+        </div>
+ <div class="row">
+     <div class="col-md-5 col" style=" ">
+       <span class="prefix txt">Email: <span class="text-success txt">{{ data.email }}</span></span>
+
+    </div>
+    <div class="col-md-7 col" style="">
+        <span class="prefix txt">Delivered Date:<span class="text-success txt"> {% if data.delevery_date_time %}{{ data.delevery_date_time}}{% else %}Shipping Process{% endif %}</span></span>
+      </div>
+        </div>
+
+    </div>
+
+ <!---------------------------------------------------------------------->
+            <div class="col-sm-12 col-md-12 col-xs-12 ">
+            <table class="table table-hover menu-tabu">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th style="text-align: center;">Product Weight</th>
+						<th style="text-align: center;">Unit Price</th>
+                        <th style="text-align: center;">Quantity</th>
+                        <th class="text-center">Sub Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+            <tbody>
+                    {% for v in data.product_details.items %}
+                        {% for x in v %}
+                    <tr>
+
+                        <td class="col-sm-4 col-md-4"><h4 class="media-heading"><span>{{ x.product_name }}  </span></h4>  </td>
+                        <td class="col-sm-2 col-md-2 text-center"><span>{{ x.product_weight }}</span></td>
+						<td class="col-sm-2 col-md-2 text-center"><span>{{ x.product_price}}</span></td>
+
+                        <td class="col-sm-2 col-md-2" style="text-align: center"><span>{{ x.product_quantity }}</span></td>
+                        <td class="col-sm-2 col-md-2 text-center"><span>{{x.total_price }}</span></td>
+                    </tr>
+
+                {% endfor %}
+                {% endfor %}
+
+			   </tbody>
+            </table>
+			<hr class="my-hr">
+        </div>
+    </div>
+   {% endfor %}
+{% else %}
+<center><img src="{% static 'images/product_not Found.png' %}" alt="Image" class="img-fluid" style="height: 200px;width: 300px;"></center>
+    <center><h2>BUY NOW</h2></center>
+    <br>
+{% endif %}
+<br><br>
+<!-----------------------------------Delivered Item Start-------------------------------------------->
+{% if myorder_data_delivered %}
+    <div class="svg-wrapper" style="margin-top: 60px;color:black;">
+  <svg height="60" width="900px" xmlns="http://www.w3.org/2000/svg">
+    <rect class="shape" height="60" width="1000px" />
+    <div class="text" style="color:black;font-size: 18px;background-color: lightgreen;text-align: center;">Delivered Item</div>
+  </svg>
+</div>
+{% for data in myorder_data_delivered %}
+
+    <div class="container" style="border: 2px solid gray;border-radius: 1%;">
+
+<br>
+        <div class="well" style="border:1px solid;">
+
+<div class="row">
+    <div class="col-md-5 col" style="">
+      <strong class="prefix">Delivery Address</strong>
+
+    </div>
+    <div class="col-md-7 col" style=" ">
+        <span class="prefix txt">Order Id  : <span class="text-success txt">{{ data.order_id }}</span></span>
+
+    </div>
+
+        </div>
+            <div class="row">
+    <div class="col-md-5 col" style="">
+      <span class="prefix text-success txt">{{ data.full_name }}</span>
+    </div>
+    <div class="col-md-7 col" style=" ">
+        <span class="prefix txt">Order Date: <span class="text-success txt">{{ data.date_time }}</span></span>
+    </div>
+
+        </div>
+
+                  <div class="row">
+    <div class="col-md-5 col" style="">
+      <span class="prefix text-success txt">{{ data.full_address}} <br> {{ data.city }}  {{ data.pincode }} (Near {{ data.landmark }})</span>
+         </div>
+    <div class="col-md-7 col" style=" ">
+      <span class="prefix txt">Total Price({{ data.no_of_items }} Items): <span class="text-success txt">{{ data.total_price }}</span><br>
+          Payment Method : <span class="text-success txt">{{ data.payment_method }}</span>
+      </span>
+    </div>
+
+        </div>
+
+
+
+             <div class="row">
+    <div class="col-md-5 col" style="">
+      <span class="prefix txt">Phone No.:<span class="text-success txt">{{ data.mobile }}</span></span>
+    </div>
+    <div class="col-md-7 col" style=" ">
+      <span class="prefix txt ">Order Status  :<span class="text-success txt"style="font-weight: bold;"> {{ data.order_status }}</span></span>
+       </div>
+
+        </div>
+ <div class="row">
+     <div class="col-md-5 col" style=" ">
+       <span class="prefix txt">Email: <span class="text-success txt">{{ data.email }}</span></span>
+
+    </div>
+    <div class="col-md-7 col" style="">
+        <span class="prefix txt">Delivered Date:<span class="text-success txt"> {% if data.delevery_date_time %}{{ data.delevery_date_time}}{% else %}Shipping Process{% endif %}</span></span>
+      </div>
+        </div>
+
+    </div>
+
+ <!---------------------------------------------------------------------->
+            <div class="col-sm-12 col-md-12 col-xs-12 ">
+            <table class="table table-hover menu-tabu">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th style="text-align: center;">Product Weight</th>
+						<th style="text-align: center;">Unit Price</th>
+                        <th style="text-align: center;">Quantity</th>
+                        <th class="text-center">Sub Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+            <tbody>
+                    {% for v in data.product_details.items %}
+                        {% for x in v %}
+                    <tr>
+
+                        <td class="col-sm-4 col-md-4"><h4 class="media-heading"><span>{{ x.product_name }}  </span></h4>  </td>
+                        <td class="col-sm-2 col-md-2 text-center"><span>{{ x.product_weight }}</span></td>
+						<td class="col-sm-2 col-md-2 text-center"><span>{{ x.product_price}}</span></td>
+
+                        <td class="col-sm-2 col-md-2" style="text-align: center"><span>{{ x.product_quantity }}</span></td>
+                        <td class="col-sm-2 col-md-2 text-center"><span>{{x.total_price }}</span></td>
+                    </tr>
+
+                {% endfor %}
+                {% endfor %}
+
+			   </tbody>
+            </table>
+			<hr class="my-hr">
+        </div>
+    </div>
+   {% endfor %}
+
+{% endif %}
+<!-----------------------------------Delivered Item END-------------------------------------------->
+
+    <br>
+</div>
+
+ <!---------------------Footer Start--------------->
+<div class="container-fluid" style="background-color: #353535;color:white;">
+<div class="row">
+    {% include 'footer.html' %}
+</div>
+</div>
+    <!---------------------Footer  End--------------->
+
+</body>
+</html>
